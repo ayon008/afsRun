@@ -14,3 +14,11 @@
 .btn-color {
     background-color: #1D98FF;
 }
+
+.activeTab {
+    @apply bg-white text-black
+}
+
+li:focus {
+    outline: none !important;
+}

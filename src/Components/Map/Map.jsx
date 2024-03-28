@@ -1,5 +1,5 @@
 import { DirectionsService, GoogleMap, InfoWindow, Marker, MarkerClusterer, Polyline, useJsApiLoader } from '@react-google-maps/api';
-import React, { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import dark from '../../Js/MapStyles';
 import svg from '../../assets/20180616145918!Light_Blue_Circle.svg';
 import clust from '../../assets/20180616145918!Light_Blue_Circle - Copy.svg';

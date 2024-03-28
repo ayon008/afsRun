@@ -1,8 +1,8 @@
-import NavBar from './NavBar';
 import bannerImage from '../assets/image 26.png'
 import { AiOutlineUser } from "react-icons/ai";
 import { BiLogOut } from "react-icons/bi";
 import clipImage from '../assets/@arthurhabudzik- Chipri board RIDE-8.jpg'
+import ScrollButton from './ScrollButton';
 
 const Banner = () => {
     return (
@@ -86,6 +86,7 @@ const Banner = () => {
                     </div>
                 </div>
                 {/* Scroll Button */}
+                <ScrollButton></ScrollButton>
             </div>
         </div>
     );

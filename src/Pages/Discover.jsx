@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Map from '../Components/Map/Map';
-import { motion } from "framer-motion"
+import { CiGrid2H, CiLocationOn } from "react-icons/ci";
+import { BsGrid } from "react-icons/bs";
+// import 'react-tabs/style/react-tabs.css';
+import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
+import Card from '../Components/Card';
+import ScrollButton from '../Components/ScrollButton';
 
 const Discover = () => {
+    const [tabIndex, setTabIndex] = useState(0);
+    const arr = [];
+    for (let i = 0; i <= 23; i++) {
+        arr.push(i)
+    }
+
     return (
         <div className='bg-black Alliance'>
             {/* Discover Text */}
@@ -25,11 +36,37 @@ const Discover = () => {
                     </select>
                 </div>
             </div>
-            {/* Map */}
-            <div className='px-10 pb-10 pt-5'>
-                <div>
-                    <Map></Map>
-                </div>
+            {/* Tab */}
+            <div className='text-white mt-10 pb-10'>
+                <Tabs className={`${tabIndex === 0 && 'relative'}`} selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+                    {/* Tab Contents */}
+                    <TabPanel>
+                        <div className='px-10 pt-5'>
+                            <div>
+                                <Map></Map>
+                            </div>
+                        </div>
+                    </TabPanel>
+                    <TabPanel>
+                        <div className='px-10 pt-5 pb-4'>
+                            <div className='grid 2xl:grid-cols-4 lg:grid-cols-3 mb-10 gap-6'>
+                                {
+                                    arr.map(a => <Card key={a}></Card>)
+                                }
+                            </div>
+                            {/* Scroll Button */}
+                            <ScrollButton></ScrollButton>
+                        </div>
+                    </TabPanel>
+                    <TabPanel>3</TabPanel>
+
+                    {/* Tab List */}
+                    <TabList className={`w-[350px] mx-auto tabs tabs-boxed p-0 bg-[#1F1F1F] rounded-[40px] ${tabIndex === 0 && 'absolute bottom-6 left-1/2 -translate-x-1/2 z-20'}`}>
+                        <Tab className={`uppercase tab text-white font-bold h-[50px] tracking-widest ${tabIndex === 0 && 'activeTab'}`} style={{ width: "calc(350px/3)", borderRadius: '40px' }}><CiLocationOn size={'1.3rem'} /><span className='ms-1'>Maps</span></Tab>
+                        <Tab className={`uppercase tab text-white font-bold h-[50px] tracking-widest ${tabIndex === 1 && 'activeTab'}`} style={{ width: "calc(350px/3)", borderRadius: '40px' }}><BsGrid size={'1.3rem'} /><span className='ms-1'>grid</span></Tab>
+                        <Tab className={`uppercase tab h-[50px] text-white font-bold tracking-widest ${tabIndex === 2 && 'activeTab'}`} style={{ width: "calc(350px/3)", borderRadius: '40px' }}><CiGrid2H size={'1.3rem'} /><span className='ms-1'>List</span></Tab>
+                    </TabList>
+                </Tabs>
             </div>
         </div>
     );
