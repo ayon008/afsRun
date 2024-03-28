@@ -3,8 +3,15 @@ import { AiOutlineUser } from "react-icons/ai";
 import { BiLogOut } from "react-icons/bi";
 import clipImage from '../assets/@arthurhabudzik- Chipri board RIDE-8.jpg'
 import ScrollButton from './ScrollButton';
+import { useNavigate } from 'react-router-dom';
 
 const Banner = () => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/login');
+    }
+
     return (
         <div className='Alliance'>
             {/* Banner Image */}
@@ -79,7 +86,7 @@ const Banner = () => {
                                 <button className="btn w-full mb-2 text-[#00528B] font-semibold text-sm">Sign Up <AiOutlineUser className='mt-1' /></button>
                             </div>
                             <div>
-                                <button className="btn w-full bg-[#1D98FF] text-white font-semibold text-sm">Login  <BiLogOut />
+                                <button onClick={() => handleClick()} className="btn w-full bg-[#1D98FF] text-white font-semibold text-sm">Login <BiLogOut />
                                 </button>
                             </div>
                         </div>
