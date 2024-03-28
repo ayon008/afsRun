@@ -9,12 +9,17 @@ import Ellipse from '../../assets/Ellipse 2.svg'
 // import { convertDecimalToDMS, meterToKm } from '../js/utilities';
 // import haversine from 'haversine-distance';
 import circle from '../../assets/return.svg';
+import { useLocation } from 'react-router-dom';
 // import { gpx } from '@tmcw/togeojson'
 
-
 const Map = () => {
+
+    const location = useLocation();
+    const pathName = location?.pathname;
+
+
     const mapStyles = {
-        height: '80vh',
+        height: `${pathName === '/discover' ? '80vh' : '100vh'}`,
         width: '100%',
         borderRadius: '10px',
     };

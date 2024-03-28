@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom"
 import Home from "../Pages/Home";
 import Layout from "../Layout/Layout";
 import Discover from "../Pages/Discover";
+import SignIn from "../Pages/SignIn";
 
 const router = createBrowserRouter([
     {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: 'login',
+        element: <SignIn></SignIn>
+    }
 ]);
 
 export default router;
