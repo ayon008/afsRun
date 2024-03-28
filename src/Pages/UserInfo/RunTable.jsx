@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Table = () => {
+const RunTable = () => {
     return (
         <div className="overflow-auto">
             <table className="table text-[#A5A5A5]">
@@ -34,4 +34,4 @@ const Table = () => {
     );
 };
 
-export default Table;
+export default RunTable;

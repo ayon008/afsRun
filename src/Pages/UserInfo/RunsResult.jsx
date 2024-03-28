@@ -2,12 +2,16 @@ import React from 'react';
 import img1 from '../../assets/layout-list.svg';
 import img2 from '../../assets/layout-grid.svg';
 import { FaGripHorizontal, FaGripLines, FaGripVertical, FaTable } from 'react-icons/fa';
-import Table from './Table';
+import Table from './RunTable';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useContext } from 'react';
 import toGeoJSON from 'togeojson';
 import { AuthContext } from '../../Provider/AuthProvider';
+import { BsGrid } from 'react-icons/bs';
+import { CiGrid2H } from 'react-icons/ci';
+import ApprovedRuns from './ApprovedRuns';
+import RunTable from './RunTable';
 
 const RunsResult = () => {
 
@@ -58,16 +62,23 @@ const RunsResult = () => {
         reader.readAsText(data);
     }
 
+    const [btnIndex, setIndex] = useState(0);
+
     return (
-        <div className='px-4'>
-            <h3 className='text-3xl mt-12 text-white font-bold Alliance pt-1'>Runs Result</h3>
+        <div className='px-4 h-full'>
+            <h3 className='text-3xl pt-12 text-white font-bold Alliance'>Runs Result</h3>
             <p className='text-[#A5A5A5] Alliance mt-2'>Here are the details of run verified by the company for your review and analysis</p>
             <div className='flex items-center gap-1 w-fit pe-3 ms-auto mt-2 mb-4'>
-                <NavLink to={"/userInformation/runsResult/approvedResults"} className={({ isActive }) => isActive ? 'text-white' : 'text-[#A5A5A5]'}><FaGripHorizontal /></NavLink>
-                <NavLink to={"/userInformation/runsResult"} className={({ isActive }) => isActive ? 'text-white' : 'text-[#A5A5A5]'}> <FaGripLines /></NavLink>
+                <button onClick={() => setIndex(0)} className={`${btnIndex === 0 ? 'text-white' : 'text-[#A5A5A5]'}`}><BsGrid size={'1rem'} /></button>
+                <button onClick={() => setIndex(1)} className={`${btnIndex === 1 ? 'text-white' : 'text-[#A5A5A5]'}`}><CiGrid2H size={'1.2rem'} /></button>
             </div>
-            <div>
-                <Outlet></Outlet>
+            <div className=''>
+                {
+                    btnIndex === 0 && <RunTable></RunTable>
+                }
+                {
+                    btnIndex === 1 && <ApprovedRuns></ApprovedRuns>
+                }
             </div>
             <div className='flex items-center gap-2 mt-6'>
                 <label htmlFor="my_modal_6" className='p-2 bg-[#1D98FF] text-white text-xs rounded-md Alliance'>ADD RUNS RESULT +</label>

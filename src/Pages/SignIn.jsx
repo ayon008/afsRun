@@ -133,7 +133,7 @@ const SignIn = () => {
                             </form>
                         </div>
                         <div className='lg:w-1/3 w-full text-center'>
-                            <p className='text-[#FFFFFF99] Alliance text-[8px]'>By signing up, I confirm that I have read and accepted Foil&Co.’s <span className='text-[#1D98FF]'>Terms & Conditions</span> and <span className='text-[#1D98FF]'>Privacy Policy</span>.</p>
+                            <p className={`text-[#FFFFFF99] Alliance 2xl:text-lg ${error ? 'lg:text-[8px]' : 'lg:text-[16px]'}`}>By signing up, I confirm that I have read and accepted Foil&Co.’s <span className='text-[#1D98FF]'>Terms & Conditions</span> and <span className='text-[#1D98FF]'>Privacy Policy</span>.</p>
                         </div>
                     </div>
                 </div>

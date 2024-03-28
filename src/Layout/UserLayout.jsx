@@ -8,7 +8,6 @@ import { FaClipboardList, FaLock, FaNewspaper, FaSignOutAlt, FaUser, FaUsers } f
 const UserLayout = () => {
     const { user, logOut } = useContext(AuthContext)
     // sign out user
-
     const navigate = useNavigate()
     const handleLogout = () => {
         logOut()
@@ -19,6 +18,10 @@ const UserLayout = () => {
                 console.log(error.message);
             })
     }
+
+    // Active Link
+
+
     return (
         <div className='relative w-full h-screen'>
             <div className='z-10'>
@@ -28,7 +31,7 @@ const UserLayout = () => {
 
             </div>
             {/* Left Nav */}
-            <div className="hero absolute z-30 w-3/4 h-3/4 bg-red-500 max-h-[600px]" style={{ top: '50%', left: '50%', transform: "translate(-50%, -50%)" }}>
+            <div className="hero absolute z-30 w-3/4 h-3/4 bg-red-500 max-h-[600px] max-w-[1060px]" style={{ top: '50%', left: '50%', transform: "translate(-50%, -50%)" }}>
                 <div className="w-full h-full flex-col">
                     <div className='w-full h-full'>
                         <div className='rounded-md w-full h-full' style={{ display: "grid", gridTemplateColumns: '2fr 4fr' }}>
