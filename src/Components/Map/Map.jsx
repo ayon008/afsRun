@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import { DirectionsService, GoogleMap, InfoWindow, Marker, MarkerClusterer, Polyline, useJsApiLoader } from '@react-google-maps/api';
 import { useEffect, useState } from 'react';
 import dark from '../../Js/MapStyles';
@@ -13,22 +14,23 @@ import { useLocation } from 'react-router-dom';
 // import { gpx } from '@tmcw/togeojson'
 
 const Map = () => {
-
     const location = useLocation();
     const pathName = location?.pathname;
 
-
+    // Maps Style 
     const mapStyles = {
         height: `${pathName === '/discover' ? '80vh' : '100vh'}`,
         width: '100%',
-        borderRadius: '10px',
+        borderRadius: `${pathName === '/discover' ? '10px' : '0px'}`,
     };
 
+    // Focused Pont In map
     const [defaultCenter, setDefaultCenter] = useState({
         lat: 48.8566,
         lng: 16.3830,
     });
 
+    // MapLoader with api
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: 'AIzaSyCLJx7EASIc2pOjiQApyAvo1FyeZcjtBLQ',
@@ -221,8 +223,7 @@ const Map = () => {
                                 </div>
                             </InfoWindow>
                         }
-
-
+                        
                         {
                             data.map(geoJSON => {
                                 return (
@@ -259,7 +260,7 @@ const Map = () => {
                                                 })}
                                         </div>
                                         <div>
-                                            <MarkerClustererF
+                                            <MarkerClusterer
                                                 options={{
                                                     imagePath: 'https://i.ibb.co/F6syggQ/Blue-Circle-Transparent.png',
                                                     styles: [{
@@ -297,7 +298,7 @@ const Map = () => {
                                                         )
                                                     })
                                                 }
-                                            </MarkerClustererF>
+                                            </MarkerClusterer>
                                         </div>
                                     </div>
                                 )

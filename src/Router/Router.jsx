@@ -8,6 +8,11 @@ import SignUpLayout from "../Layout/SignUpLayout";
 import SignUpWithGoogle from "../Pages/SignUp/SignUpWithGoogle";
 import SignUpForm from "../Pages/SignUp/SignUpForm";
 import SignUpUserDetails from "../Pages/SignUp/SignUpUserDetails";
+import UserLayout from "../Layout/UserLayout";
+import UserInfo from "../Pages/UserInfo/UserInfo";
+import RunsResult from "../Pages/UserInfo/RunsResult";
+import ApprovedRuns from "../Pages/UserInfo/ApprovedRuns";
+import RunMap from "../Pages/RunMap";
 
 const router = createBrowserRouter([
     {
@@ -21,6 +26,10 @@ const router = createBrowserRouter([
             {
                 path: 'discover',
                 element: <Discover></Discover>
+            },
+            {
+                path: 'allRuns',
+                element: <RunMap></RunMap>
             }
         ]
     },
@@ -45,6 +54,20 @@ const router = createBrowserRouter([
     {
         path: 'login',
         element: <SignIn></SignIn>
+    },
+    {
+        path: 'userInformation',
+        element: <UserLayout></UserLayout>,
+        children: [
+            {
+                path: '/userInformation',
+                element: <UserInfo></UserInfo>
+            },
+            {
+                path: 'runsResults',
+                element: <RunsResult></RunsResult>,
+            }
+        ]
     },
 ]);
 
