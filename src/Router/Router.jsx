@@ -7,6 +7,7 @@ import SignIn from "../Pages/SignIn";
 import SignUpLayout from "../Layout/SignUpLayout";
 import SignUpWithGoogle from "../Pages/SignUp/SignUpWithGoogle";
 import SignUpForm from "../Pages/SignUp/SignUpForm";
+import SignUpUserDetails from "../Pages/SignUp/SignUpUserDetails";
 
 const router = createBrowserRouter([
     {
@@ -34,7 +35,11 @@ const router = createBrowserRouter([
             {
                 path: 'signUpForm',
                 element: <SignUpForm></SignUpForm>
-            }
+            },
+            {
+                path: 'userDetails',
+                element: <SignUpUserDetails></SignUpUserDetails>
+            },
         ]
     },
     {

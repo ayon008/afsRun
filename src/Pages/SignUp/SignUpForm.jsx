@@ -22,6 +22,11 @@ const SignUpForm = () => {
         }
     }
     const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/signup/userDetails')
+    }
+
     const [data, setData] = useState(null)
     const handleSignUp = event => {
         event.preventDefault();
@@ -64,12 +69,12 @@ const SignUpForm = () => {
                     <FaEye onClick={() => showCredential(confirmPasswordRef)} ref={confirmPasswordRef} className='text-[#999999] absolute right-4 top-1/2' style={{ transform: "translateY(-50%)" }} />
                 </div>
                 <div className="form-control">
-                    <button className="btn bg-[#1D98FF] border-none text-white Alliance">CONTINUE</button>
+                    <button onClick={() => handleClick()} className="btn bg-[#1D98FF] border-none text-white Alliance">CONTINUE</button>
                 </div>
                 <div className='flex items-center w-fit mx-auto gap-2'>
                     <p className='text-sm text-[#FFFFFF99]'>Already have an account?</p>
                     <div className='flex items-baseline gap-1'>
-                        <p><Link to="/signin" className='text-[#1D98FF] text-sm'>Log In</Link></p>
+                        <p><Link to="/login" className='text-[#1D98FF] text-sm'>Log In</Link></p>
                         <img src={Arrow} className='w-[12px]' alt="" />
                     </div>
                 </div>

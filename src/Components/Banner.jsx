@@ -8,8 +8,8 @@ import { useNavigate } from 'react-router-dom';
 const Banner = () => {
     const navigate = useNavigate();
 
-    const handleClick = () => {
-        navigate('/login');
+    const handleClick = (link) => {
+        navigate(link);
     }
 
     return (
@@ -83,10 +83,10 @@ const Banner = () => {
                         </div>
                         <div className='mt-16'>
                             <div>
-                                <button className="btn w-full mb-2 text-[#00528B] font-semibold text-sm">Sign Up <AiOutlineUser className='mt-1' /></button>
+                                <button onClick={() => handleClick('/signup')} className="btn w-full mb-2 text-[#00528B] font-semibold text-sm">Sign Up <AiOutlineUser className='mt-1' /></button>
                             </div>
                             <div>
-                                <button onClick={() => handleClick()} className="btn w-full bg-[#1D98FF] text-white font-semibold text-sm">Login <BiLogOut />
+                                <button onClick={() => handleClick('/login')} className="btn w-full bg-[#1D98FF] text-white font-semibold text-sm">Login <BiLogOut />
                                 </button>
                             </div>
                         </div>
