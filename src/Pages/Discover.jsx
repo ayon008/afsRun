@@ -6,6 +6,7 @@ import { BsGrid } from "react-icons/bs";
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import Card from '../Components/Card';
 import ScrollButton from '../Components/ScrollButton';
+import Table from '../Components/Table';
 
 const Discover = () => {
     const [tabIndex, setTabIndex] = useState(0);
@@ -41,14 +42,14 @@ const Discover = () => {
                 <Tabs className={`${tabIndex === 0 && 'relative'}`} selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
                     {/* Tab Contents */}
                     <TabPanel>
-                        <div className='px-10 pt-5'>
+                        <div className='px-10'>
                             <div>
                                 <Map></Map>
                             </div>
                         </div>
                     </TabPanel>
                     <TabPanel>
-                        <div className='px-10 pt-5 pb-4'>
+                        <div className='px-10 pb-4'>
                             <div className='grid 2xl:grid-cols-4 lg:grid-cols-3 mb-10 gap-6'>
                                 {
                                     arr.map(a => <Card key={a}></Card>)
@@ -58,7 +59,13 @@ const Discover = () => {
                             <ScrollButton></ScrollButton>
                         </div>
                     </TabPanel>
-                    <TabPanel>3</TabPanel>
+                    <TabPanel>
+                        <div className='px-10 pb-4'>
+                            <Table />
+                            {/* Scroll Button */}
+                            <ScrollButton></ScrollButton>
+                        </div>
+                    </TabPanel>
 
                     {/* Tab List */}
                     <TabList className={`w-[350px] mx-auto tabs tabs-boxed p-0 bg-[#1F1F1F] rounded-[40px] ${tabIndex === 0 && 'absolute bottom-6 left-1/2 -translate-x-1/2 z-20'}`}>

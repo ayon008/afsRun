@@ -35,6 +35,7 @@ const Card = () => {
                         <span className='text-[#FFF]'>Perroz Plouguerneau</span>
                     </span>
                 </p>
+                {/* Distance */}
                 <div className='flex items-center'>
                     <div className='w-1/2'>
                         <p className='text-sm text-[#FFFFFFCC]'>Distance</p>
