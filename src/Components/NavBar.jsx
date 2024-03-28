@@ -5,17 +5,17 @@ import logo from '../assets/logo.png'
 const NavBar = () => {
     const navItems = <>
         <li>
-            <Link className='Alliance uppercase'>Discover</Link>
+            <Link className='Alliance uppercase' to="/discover">Discover</Link>
         </li>
         <li>
-            <Link className='Alliance uppercase'>ADD A RUN</Link>
+            <Link className='Alliance uppercase' to="/addRun">ADD A RUN</Link>
         </li>
         <li>
-            <Link className='Alliance uppercase pe-2 dim'>Login</Link>
+            <Link className='Alliance uppercase pe-2 dim' to="/login">Login</Link>
         </li>
         <li><Link className='Alliance uppercase px-0'>/</Link></li>
         <li>
-            <Link className='Alliance uppercase ps-2'>Sign Up</Link>
+            <Link className='Alliance uppercase ps-2' to="/signup">Sign Up</Link>
         </li>
     </>
     return (

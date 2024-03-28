@@ -3,21 +3,10 @@ import bannerImage from '../assets/image 26.png'
 import { AiOutlineUser } from "react-icons/ai";
 import { BiLogOut } from "react-icons/bi";
 import clipImage from '../assets/@arthurhabudzik- Chipri board RIDE-8.jpg'
-import { Link, animateScroll as scroll } from 'react-scroll';
-import { FaArrowUp, FaHome } from 'react-icons/fa';
-
 
 const Banner = () => {
-    const scrollToTop = () => {
-        scroll.scrollToTop({
-            duration: 1000,
-            smooth: true,
-        });
-    };
     return (
         <div className='Alliance'>
-            {/* NavBar */}
-            <NavBar></NavBar>
             {/* Banner Image */}
             <div style={{ backgroundImage: `url('${bannerImage}')`, backgroundPosition: 'center calc(10% - 130px)', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }} className='min-h-screen max-h-[1300px] h-screen'>
                 <div className='text-white flex flex-col h-full'>
@@ -43,7 +32,7 @@ const Banner = () => {
                     <h5 className='mt-5 uppercase Alliance tracking-widest text-white'>Access comprehensive content</h5>
                 </div>
                 {/* Card Section Added */}
-                <div className='2xl:mt-20 2xl:pb-56 lg:pb-40 lg:mt-14 2xl:mx-40 lg:mx-24 grid 2xl:grid-cols-4 lg:grid-cols-3 gap-5'>
+                <div className='2xl:mt-20 2xl:pb-48 lg:pb-36 lg:mt-14 2xl:mx-40 lg:mx-24 grid 2xl:grid-cols-4 lg:grid-cols-3 gap-5'>
                     {/* Card-1 */}
                     <div className='text-white border-2 border-[#1D98FF99] p-7 rounded-[10px] h-[350px]'>
                         <div>
@@ -97,9 +86,6 @@ const Banner = () => {
                     </div>
                 </div>
                 {/* Scroll Button */}
-                <div className='pb-4 w-fit mx-auto'>
-                    <button className='text-white flex items-center gap-1 dim Alliance uppercase' onClick={scrollToTop}><span><FaArrowUp /></span><span>Scroll To Top</span></button>
-                </div>
             </div>
         </div>
     );
