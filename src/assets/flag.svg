@@ -1,0 +1,9 @@
+<svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="flag">
+<g id="contents">
+<path id="bottom" fill-rule="evenodd" clip-rule="evenodd" d="M11 -2H18V13H11V-2Z" fill="#F50100"/>
+<path id="left" fill-rule="evenodd" clip-rule="evenodd" d="M-2 -2H5V13H-2V-2Z" fill="#2E42A5"/>
+<path id="middle" fill-rule="evenodd" clip-rule="evenodd" d="M5 -2H11V13H5V-2Z" fill="#F7FCFF"/>
+</g>
+</g>
+</svg>
