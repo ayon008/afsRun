@@ -14,6 +14,8 @@ import RunsResult from "../Pages/UserInfo/RunsResult";
 import ApprovedRuns from "../Pages/UserInfo/ApprovedRuns";
 import RunMap from "../Pages/RunMap";
 import AddRun from "../Pages/UserInfo/AddRun";
+import PrivateRoute from "../Provider/PrivateRoute";
+import UserProfile from "../Pages/UserInfo/UserProfile";
 
 const router = createBrowserRouter([
     {
@@ -70,7 +72,11 @@ const router = createBrowserRouter([
             },
             {
                 path: 'runsResults/addARun',
-                element: <AddRun></AddRun>
+                element: <PrivateRoute><AddRun></AddRun></PrivateRoute>
+            },
+            {
+                path: 'userProfile',
+                element: <UserProfile></UserProfile>
             }
         ]
     },

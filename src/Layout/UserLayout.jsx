@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Map from '../Components/Map/Map';
 import { AuthContext } from '../Provider/AuthProvider';
 import logo from '../assets/logo.png';
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { FaClipboardList, FaLock, FaNewspaper, FaSignOutAlt, FaUser, FaUsers } from 'react-icons/fa';
 
 const UserLayout = () => {
@@ -44,10 +44,12 @@ const UserLayout = () => {
                                         <div className='space-y-5'>
                                             {/* User name and email */}
                                             <li>
-                                                <div className='p-2 rounded-sm bg-white Alliance text-[#111111]'>
-                                                    <p className='font-semibold'>Hello, {user?.displayName}</p>
-                                                    <p>{user?.email}</p>
-                                                </div>
+                                                <Link to='/userInformation/userProfile'>
+                                                    <div className='p-2 rounded-sm bg-white Alliance text-[#111111]'>
+                                                        <p className='font-semibold'>Hello, {user?.displayName}</p>
+                                                        <p>{user?.email}</p>
+                                                    </div>
+                                                </Link>
                                             </li>
                                             {/* Nav Links */}
                                             <li>

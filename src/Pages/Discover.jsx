@@ -7,6 +7,7 @@ import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import Card from '../Components/Card';
 import ScrollButton from '../Components/ScrollButton';
 import Table from '../Components/Table';
+import { Link, animateScroll as scroll } from 'react-scroll';
 
 const Discover = () => {
     const [tabIndex, setTabIndex] = useState(0);
@@ -14,6 +15,13 @@ const Discover = () => {
     for (let i = 0; i <= 23; i++) {
         arr.push(i)
     }
+
+    const scrollToTop = () => {
+        scroll.scrollToTop({
+            duration: 200,
+            smooth: true,
+        });
+    };
 
     return (
         <div className='bg-black Alliance'>
@@ -70,8 +78,8 @@ const Discover = () => {
                     {/* Tab List */}
                     <TabList className={`w-[350px] mx-auto tabs tabs-boxed p-0 bg-[#1F1F1F] rounded-[40px] ${tabIndex === 0 && 'absolute bottom-6 left-1/2 -translate-x-1/2 z-20'}`}>
                         <Tab className={`uppercase tab text-white font-bold h-[50px] tracking-widest ${tabIndex === 0 && 'activeTab'}`} style={{ width: "calc(350px/3)", borderRadius: '40px' }}><CiLocationOn size={'1.3rem'} /><span className='ms-1'>Maps</span></Tab>
-                        <Tab className={`uppercase tab text-white font-bold h-[50px] tracking-widest ${tabIndex === 1 && 'activeTab'}`} style={{ width: "calc(350px/3)", borderRadius: '40px' }}><BsGrid size={'1.3rem'} /><span className='ms-1'>grid</span></Tab>
-                        <Tab className={`uppercase tab h-[50px] text-white font-bold tracking-widest ${tabIndex === 2 && 'activeTab'}`} style={{ width: "calc(350px/3)", borderRadius: '40px' }}><CiGrid2H size={'1.3rem'} /><span className='ms-1'>List</span></Tab>
+                        <Tab onClick={() => scrollToTop()} className={`uppercase tab text-white font-bold h-[50px] tracking-widest ${tabIndex === 1 && 'activeTab'}`} style={{ width: "calc(350px/3)", borderRadius: '40px' }}><BsGrid size={'1.3rem'} /><span className='ms-1'>grid</span></Tab>
+                        <Tab onClick={() => scrollToTop()} className={`uppercase tab h-[50px] text-white font-bold tracking-widest ${tabIndex === 2 && 'activeTab'}`} style={{ width: "calc(350px/3)", borderRadius: '40px' }}><CiGrid2H size={'1.3rem'} /><span className='ms-1'>List</span></Tab>
                     </TabList>
                 </Tabs>
             </div>

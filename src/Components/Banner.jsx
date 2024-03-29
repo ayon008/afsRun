@@ -12,6 +12,7 @@ const Banner = () => {
         navigate(link);
     }
 
+
     return (
         <div className='Alliance'>
             {/* Banner Image */}
@@ -19,7 +20,7 @@ const Banner = () => {
                 <div className='text-white flex flex-col h-full'>
                     <div className='lg:my-auto 2xl:mt-[300px] 2xl:px-40 lg:px-28'>
                         <h3 className='font-bold Alliance 2xl:text-7xl lg:text-5xl text-3xl'>Discover the downwind <br /> freeride and its adventure <br /> and discovery aspect</h3>
-                        <button className="mt-6 btn btn-info uppercase text-white btn-color">view all runs <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <button onClick={() => navigate('allRuns')} className="mt-6 btn btn-info uppercase text-white btn-color">view all runs <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g id="main_icons/arrow-up-right">
                                 <path id="Vector" d="M12 2L2 12M12 2H3M12 2V11" stroke="white" stroke-width="2" />
                             </g>

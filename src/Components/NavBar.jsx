@@ -8,7 +8,7 @@ const NavBar = () => {
             <NavLink className={({ isActive }) => isActive ? "text-[#1D98FF] Alliance uppercase" : "text-[#FFFFFFCC] Alliance uppercase"} to="discover">Discover</NavLink>
         </li>
         <li>
-            <NavLink className={({ isActive }) => isActive ? "text-[#1D98FF] Alliance uppercase" : "text-[#FFFFFFCC] Alliance uppercase"} to="addRun">ADD A RUN</NavLink>
+            <NavLink className={({ isActive }) => isActive ? "text-[#1D98FF] Alliance uppercase" : "text-[#FFFFFFCC] Alliance uppercase"} to='userInformation/runsResults/addARun'>ADD A RUN</NavLink>
         </li>
         <li>
             <NavLink className={({ isActive }) => isActive ? "text-[#1D98FF] Alliance uppercase pe-1 dim" : "text-[#FFFFFFCC] Alliance uppercase pe-1 dim"} to="login">Login</NavLink>
