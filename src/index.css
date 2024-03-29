@@ -22,3 +22,7 @@
 li:focus {
     outline: none !important;
 }
+
+.menu li a:focus {
+    @apply text-[#1D98FF] !important;
+}

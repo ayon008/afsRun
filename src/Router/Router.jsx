@@ -13,6 +13,7 @@ import UserInfo from "../Pages/UserInfo/UserInfo";
 import RunsResult from "../Pages/UserInfo/RunsResult";
 import ApprovedRuns from "../Pages/UserInfo/ApprovedRuns";
 import RunMap from "../Pages/RunMap";
+import AddRun from "../Pages/UserInfo/AddRun";
 
 const router = createBrowserRouter([
     {
@@ -65,7 +66,11 @@ const router = createBrowserRouter([
             },
             {
                 path: 'runsResults',
-                element: <RunsResult></RunsResult>,
+                element: <RunsResult></RunsResult>
+            },
+            {
+                path: 'runsResults/addARun',
+                element: <AddRun></AddRun>
             }
         ]
     },

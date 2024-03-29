@@ -24,35 +24,39 @@ const UserLayout = () => {
 
     return (
         <div className='relative w-full h-screen'>
+            {/* Background Map */}
             <div className='z-10'>
                 <Map></Map>
             </div>
+            {/* Blur */}
             <div className='w-full h-full inset-0 absolute z-20' style={{ backdropFilter: "blur(15px)" }}>
 
             </div>
             {/* Left Nav */}
-            <div className="hero absolute z-30 w-3/4 h-3/4 bg-red-500 max-h-[600px] max-w-[1060px]" style={{ top: '50%', left: '50%', transform: "translate(-50%, -50%)" }}>
+            <div className="hero absolute z-30 w-3/4 h-[90%] bg-red-500 max-h-[600px] max-w-[1060px]" style={{ top: '50%', left: '50%', transform: "translate(-50%, -50%)" }}>
                 <div className="w-full h-full flex-col">
                     <div className='w-full h-full'>
                         <div className='rounded-md w-full h-full' style={{ display: "grid", gridTemplateColumns: '2fr 4fr' }}>
                             <div className='p-5 bg-[#111111] h-full'>
-                                <img className='h-auto w-[100px]' src={logo} alt="" />
+                                <img className='h-auto w-[150px]' src={logo} alt="" />
                                 <div className="mt-6 flex flex-col h-full">
                                     <ul className='flex flex-col h-[90%] justify-between'>
                                         <div className='space-y-5'>
+                                            {/* User name and email */}
                                             <li>
                                                 <div className='p-2 rounded-sm bg-white Alliance text-[#111111]'>
                                                     <p className='font-semibold'>Hello, {user?.displayName}</p>
                                                     <p>{user?.email}</p>
                                                 </div>
                                             </li>
+                                            {/* Nav Links */}
                                             <li>
                                                 <NavLink to={'/userInformation'} className={({ isActive }) => isActive ? 'text-white  text-xs Alliance' :
                                                     'text-[#A0A0A0] text-xs Alliance'}><span className='flex items-center gap-2'><FaUser /> INFORMATION</span></NavLink>
                                             </li>
                                             <li>
-                                                <NavLink to={'/userInformation/runsResults'} className={({ isActive }) => isActive ? 'text-white  text-xs Alliance' :
-                                                    'text-[#A0A0A0] text-xs Alliance'}><span className='flex items-center gap-2'><FaClipboardList /> MY RUNS RESULT</span></NavLink>
+                                                <NavLink to={'runsResults'} className={({ isActive }) => isActive ? 'text-white  text-xs Alliance' :
+                                                    'text-[#A0A0A0] text-xs Alliance'}><span className='flex items-center gap-2'><FaClipboardList /> MY RUNS </span></NavLink>
                                             </li>
                                         </div>
                                         <div className='space-y-5'>

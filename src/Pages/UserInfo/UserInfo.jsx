@@ -17,6 +17,7 @@ const UserInfo = () => {
             .then(res => res.json())
             .then(data => setUserData(data))
     }, [])
+
     const updateInformation = event => {
         event.preventDefault()
         const email = event.target.email.value;
@@ -50,7 +51,7 @@ const UserInfo = () => {
 
     const { email, name, surName, userName, uid } = userData;
     return (
-        <div className='px-4 h-full'>
+        <div className='px-4'>
             <h3 className='text-3xl mt-12 text-white font-bold Alliance pt-1'>User Information</h3>
             <p className='text-[#A5A5A5] Alliance mt-2'>Here you can enter or edit public information about yourself. The changes you make will be displayed immediately after saving</p>
             <form onSubmit={() => updateInformation(event)}>

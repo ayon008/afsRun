@@ -1,21 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/logo.png'
 
 const NavBar = () => {
     const navItems = <>
         <li>
-            <Link className='Alliance uppercase' to="/discover">Discover</Link>
+            <NavLink className={({ isActive }) => isActive ? "text-[#1D98FF] Alliance uppercase" : "text-[#FFFFFFCC] Alliance uppercase"} to="discover">Discover</NavLink>
         </li>
         <li>
-            <Link className='Alliance uppercase' to="/addRun">ADD A RUN</Link>
+            <NavLink className={({ isActive }) => isActive ? "text-[#1D98FF] Alliance uppercase" : "text-[#FFFFFFCC] Alliance uppercase"} to="addRun">ADD A RUN</NavLink>
         </li>
         <li>
-            <Link className='Alliance uppercase pe-2 dim' to="/login">Login</Link>
+            <NavLink className={({ isActive }) => isActive ? "text-[#1D98FF] Alliance uppercase pe-1 dim" : "text-[#FFFFFFCC] Alliance uppercase pe-1 dim"} to="login">Login</NavLink>
         </li>
-        <li><Link className='Alliance uppercase px-0'>/</Link></li>
         <li>
-            <Link className='Alliance uppercase ps-2' to="/signup">Sign Up</Link>
+            <NavLink className={({ isActive }) => isActive ? "text-[#1D98FF] Alliance uppercase" : "text-[#FFFFFFCC] Alliance uppercase px-0"} to="signup">/</NavLink>
+        </li>
+        <li>
+            <NavLink className={({ isActive }) => isActive ? "text-[#1D98FF] Alliance uppercase ps-1" : "text-[#FFFFFFCC] Alliance uppercase ps-1"} to="signup">Sign Up</NavLink>
         </li>
     </>
     return (
@@ -26,7 +28,7 @@ const NavBar = () => {
                 </div>
                 {/* Large Display */}
                 <div className="flex-none">
-                    <ul className="menu menu-horizontal px-1 font-bold text-[#FFFFFFCC]">
+                    <ul className="menu menu-horizontal px-1 font-bold">
                         {navItems}
                         {/* NavLinks according to users */}
                         {/* {

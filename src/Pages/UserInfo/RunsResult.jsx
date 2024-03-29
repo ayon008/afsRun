@@ -30,7 +30,8 @@ const RunsResult = () => {
         }
     }
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
     const handleUpload = () => {
         if (!data) {
             alert('Please select a file.');
@@ -62,7 +63,15 @@ const RunsResult = () => {
         reader.readAsText(data);
     }
 
+    //  table && grid
     const [btnIndex, setIndex] = useState(0);
+
+    // Add a Run
+
+    const handleNavigate = () => {
+        navigate('addARun');
+    }
+
 
     return (
         <div className='px-4 h-full'>
@@ -83,7 +92,7 @@ const RunsResult = () => {
             <div className='flex items-center gap-2 mt-6'>
                 <label htmlFor="my_modal_6" className='p-2 bg-[#1D98FF] text-white text-xs rounded-md Alliance'>ADD RUNS RESULT +</label>
                 {/* <button className='p-2 bg-[#1D98FF] text-white text-xs rounded-md Alliance'>ADD RUNS RESULT +</button> */}
-                <button className='p-2 bg-[#3D3D3D] text-white text-xs rounded-md Alliance'>ADD A RUNS +</button>
+                <button className='p-2 bg-[#3D3D3D] text-white text-xs rounded-md Alliance' onClick={() => handleNavigate()}>ADD A RUN +</button>
             </div>
             <input type="checkbox" id="my_modal_6" className="modal-toggle" />
             <div className="modal" role="dialog">
