@@ -32,7 +32,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'allRuns',
-                element: <RunMap></RunMap>
+                element: <PrivateRoute><RunMap></RunMap></PrivateRoute>
             }
         ]
     },
