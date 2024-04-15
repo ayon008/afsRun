@@ -61,13 +61,12 @@ const SignIn = () => {
         createWithGoogle()
             .then(result => {
                 const user = result.user;
-                axios.post('http://localhost:5000/users', {
-                    email: user?.email,
-                    name: user?.displayName,
-                })
-                
-                    .then(data => {
-                        navigate('/discover')
+                const name = user?.displayName.split(' ');
+                const firstName = name[0];
+                const surName = name[1];
+                axios.post('http://localhost:5000/users', { email: user?.email, firstName: firstName, surName: surName, uid: user?.uid })
+                    .then(rseponse => {
+                        navigate('/userInformation')
                         console.log(user);
                         setError(false)
                     })

@@ -1,9 +1,17 @@
+import { Helmet } from 'react-helmet';
 import Map from '../Components/Map/Map';
 import { Outlet } from 'react-router-dom';
+import logo from '../assets/logo.svg'
 
 const SignUpLayout = () => {
+    
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>AFS RUN | SIGN UP</title>
+                <link rel="icon" type="image/x-icon" href={logo} />
+            </Helmet>
             <div className='relative'>
                 {/* background Map */}
                 <div className="z-10">

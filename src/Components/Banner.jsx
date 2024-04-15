@@ -25,10 +25,10 @@ const Banner = () => {
                     delay:1,
                     duration:0.3
                 }}
-                style={{ backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundImage: `url('${bannerImage}')` }} className='min-h-screen max-h-[1300px] h-screen w-full'>
+                style={{ backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundImage: `url('${bannerImage}')` }} className='min-h-screen max-h-[1300px] w-full'>
                 <div
-                    className='text-white flex flex-col min-h-screen max-h-[1300px] h-screen'>
-                    <div className='lg:my-auto 2xl:mt-[300px] 2xl:px-40 lg:px-28'>
+                    className='text-white flex flex-col min-h-screen max-h-[1300px]'>
+                    <div className='my-auto 2xl:px-40 lg:px-28 px-12'>
                         <motion.h3
                             initial={{ opacity: 0, y: 100 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -38,7 +38,7 @@ const Banner = () => {
                             initial={{ opacity: 0, y: 100 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ ease: 'easeInOut', delay: 1, duration: 0.5 }}
-                            onClick={() => navigate('allRuns')} className="mt-6 btn btn-info uppercase text-white btn-color">view all runs <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            onClick={() => navigate('allRuns')} className="mt-6 btn btn-info uppercase text-white btn-color ">view all runs <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g id="main_icons/arrow-up-right">
                                     <path id="Vector" d="M12 2L2 12M12 2H3M12 2V11" stroke="white" stroke-width="2" />
                                 </g>
@@ -50,11 +50,11 @@ const Banner = () => {
             {/* Banner Second Section */}
             <div className='bg-black'>
                 {/* Transparent Text */}
-                <div className='2xl:mx-40 2xl:py-52 xl:py-44 lg:py-32 lg:mx-24 border-b border-[#FFFFFF99]'>
-                    <h3 className='Alliance 2xl:text-[90px] bg-fixed lg:text-6xl text-white uppercase' style={{ backgroundImage: `url('${clipImage}')`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'top', backgroundClip: 'text', color: 'transparent', WebkitBackgroundClip: 'text' }}><span>Downwinder is the community app around downwind that accompanies all downwind enthusiasts before and after their outings.</span></h3>
+                <div className='2xl:mx-40 2xl:py-52 xl:py-44 lg:py-32 lg:mx-24 px-12 py-20 border-b border-[#FFFFFF99]'>
+                    <h3 className='Alliance 2xl:text-[90px] bg-fixed lg:text-6xl text-4xl lg:text-left text-center text-white uppercase' style={{ backgroundImage: `url('${clipImage}')`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'top', backgroundClip: 'text', color: 'transparent', WebkitBackgroundClip: 'text' }}><span>Downwinder is the community app around downwind that accompanies all downwind enthusiasts before and after their outings.</span></h3>
                 </div>
                 {/* Horizontal End and a small text appear */}
-                <div className='2xl:mx-40 lg:mx-24'>
+                <div className='2xl:mx-40 lg:mx-24 lg:my-0 my-10 px-12'>
                     <h5 className='mt-5 uppercase Alliance tracking-widest text-white'>Access comprehensive content</h5>
                 </div>
                 {/* Card Section Added */}
@@ -65,7 +65,7 @@ const Banner = () => {
                         ease: "linear",
                         duration: '0.5'
                     }}
-                    className={`2xl:mt-20 2xl:pb-48 lg:pb-36 lg:mt-14 2xl:mx-40 lg:mx-24 grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-3`}>
+                    className={`2xl:mt-20 2xl:pb-48 lg:pb-36 lg:mt-14 2xl:mx-40 lg:mx-24 grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-3 grid-cols-1 px-12 pb-20`}>
                     {/* Card-1 */}
                     <div className='text-white border-2 border-[#1D98FF99] p-7 rounded-[10px] h-[400px]'>
                         <div>

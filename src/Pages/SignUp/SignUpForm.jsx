@@ -27,7 +27,6 @@ const SignUpForm = () => {
         navigate('/signup/userDetails')
     }
 
-    const [data, setData] = useState(null)
     const handleSignUp = event => {
         event.preventDefault();
         const email = JSON.parse(localStorage.getItem('email'));
@@ -38,13 +37,11 @@ const SignUpForm = () => {
             console.log(email, confirmPassword, password, error);
             return;
         }
-        let data = { email, password };
-        localStorage.setItem('data', JSON.stringify(data));
-        setData(data)
+        let userCredential = { email, password };
+        localStorage.setItem('data', JSON.stringify(userCredential));
         navigate('/signup/user');
     }
 
-    console.log(data);
     return (
         <div className="card shrink-0 lg:w-1/3 w-full shadow-2xl rounded-none bg-[#1F1F1F]">
             <form onSubmit={() => handleSignUp(event)} className="card-body space-y-2">

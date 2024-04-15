@@ -12,7 +12,7 @@ const ScrollButton = () => {
         });
     };
     return (
-        <div className='bg-black'>
+        <div className='bg-black hidden lg:block'>
             <div className='pb-4 w-fit mx-auto'>
                 {/* Button */}
                 <motion.button

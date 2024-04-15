@@ -6,6 +6,8 @@ import { FaCheck, FaEye } from "react-icons/fa";
 import Arrow from '../../assets/main_icons/arrow-up-right.svg'
 import { updateProfile } from 'firebase/auth';
 import { AuthContext } from '../../Provider/AuthProvider';
+import { Helmet } from 'react-helmet';
+import { Swal } from 'sweetalert2/dist/sweetalert2';
 
 const SignUpUserDetails = () => {
     const [error, setError] = useState('');
@@ -14,7 +16,6 @@ const SignUpUserDetails = () => {
         event.preventDefault();
         const data = JSON.parse(localStorage.getItem('data'));
         const { email, password } = data;
-
         const name = event.target.name.value;
         const surName = event.target.surName.value;
         const userName = event.target.userName.value;
@@ -43,7 +44,13 @@ const SignUpUserDetails = () => {
                     .then(res => res.json())
                     .then(data => {
                         if (data) {
-                            alert('added')
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: "Signed Up",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
                         }
                     })
                 event.target.reset();

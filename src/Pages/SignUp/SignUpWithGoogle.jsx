@@ -4,6 +4,8 @@ import google from '../../assets/main_icons/google.svg'
 import { Link, useNavigate } from 'react-router-dom';
 import Arrow from '../../assets/main_icons/arrow-up-right.svg'
 import { AuthContext } from '../../Provider/AuthProvider';
+import { Helmet } from 'react-helmet';
+import axios from 'axios';
 
 const SignUpWithGoogle = () => {
 
@@ -25,7 +27,13 @@ const SignUpWithGoogle = () => {
         createWithGoogle()
             .then(result => {
                 const user = result.user;
-                navigate('/userInformation')
+                const name = user?.displayName.split(' ');
+                const firstName = name[0];
+                const surName = name[1];
+                axios.post('http://localhost:5000/users', { email: user?.email, firstName: firstName, surName: surName })
+                    .then(rseponse => {
+                        navigate('/userInformation')
+                    })
                 console.log(user);
             })
             .catch(error => {

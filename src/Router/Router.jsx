@@ -11,7 +11,6 @@ import SignUpUserDetails from "../Pages/SignUp/SignUpUserDetails";
 import UserLayout from "../Layout/UserLayout";
 import UserInfo from "../Pages/UserInfo/UserInfo";
 import RunsResult from "../Pages/UserInfo/RunsResult";
-import ApprovedRuns from "../Pages/UserInfo/ApprovedRuns";
 import RunMap from "../Pages/RunMap";
 import AddRun from "../Pages/UserInfo/AddRun";
 import PrivateRoute from "../Provider/PrivateRoute";
