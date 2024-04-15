@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Arrow from '../assets/main_icons/arrow-up-right.svg'
 import Map from '../Components/Map/Map';
 import { AuthContext } from '../Provider/AuthProvider';
+import axios from 'axios';
 
 const SignIn = () => {
 
@@ -42,7 +43,7 @@ const SignIn = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user;
-                navigate('/')
+                navigate('/discover')
                 event.target.reset();
                 console.log(user);
                 setError(false)
@@ -60,9 +61,16 @@ const SignIn = () => {
         createWithGoogle()
             .then(result => {
                 const user = result.user;
-                navigate('/')
-                console.log(user);
-                setError(false)
+                axios.post('http://localhost:5000/users', {
+                    email: user?.email,
+                    name: user?.displayName,
+                })
+                
+                    .then(data => {
+                        navigate('/discover')
+                        console.log(user);
+                        setError(false)
+                    })
             })
             .catch(error => {
                 console.log(error);

@@ -25,6 +25,7 @@ const SignUpWithGoogle = () => {
         createWithGoogle()
             .then(result => {
                 const user = result.user;
+                navigate('/userInformation')
                 console.log(user);
             })
             .catch(error => {

@@ -40,12 +40,16 @@ const Map = () => {
     const [distance, setDistance] = useState(null);
     const [map, setMap] = useState(null);
     const [showPolyline, setShowPolyline] = useState(false);
-    const [zoom, setZoom] = useState(5);
     const [carDistance, setCarDistance] = useState(null);
 
+    const [loading, setLoading] = useState(true);
+
     const onLoad = (map) => {
+        setLoading(false);
         setMap(map);
     }
+
+    console.log(loading);
 
     const onZoomChanged = () => {
         const currentZoom = map.getZoom();
@@ -119,6 +123,8 @@ const Map = () => {
     const close = () => {
         setSelected(null)
     }
+
+    
     console.log(selected);
     return (
         <div>
@@ -129,10 +135,10 @@ const Map = () => {
                         mapTypeControl: false,
                         zoomControl: false,
                         streetViewControl: false,
-                        fullscreenControl: false
+                        fullscreenControl: false,
                     }}
                         mapContainerStyle={mapStyles}
-                        zoom={zoom}
+                        zoom={5}
                         center={defaultCenter}
                         onLoad={onLoad}
                     >
@@ -223,7 +229,7 @@ const Map = () => {
                                 </div>
                             </InfoWindow>
                         }
-                        
+
                         {
                             data.map(geoJSON => {
                                 return (
