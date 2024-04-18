@@ -22,10 +22,10 @@ const Banner = () => {
                 animate={{ backgroundSize: '120%', backgroundPositionX: 'left', backgroundPositionY: 'calc(10% - 130px)' }}
                 transition={{
                     ease: 'easeInOut',
-                    delay:1,
-                    duration:0.3
+                    delay: 1,
+                    duration: 0.3
                 }}
-                style={{ backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundImage: `url('${bannerImage}')` }} className='min-h-screen max-h-[1300px] w-full'>
+                style={{ backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundImage: `url('${bannerImage}')` }} className='min-h-screen max-h-[1300px] w-full lg:block hidden'>
                 <div
                     className='text-white flex flex-col min-h-screen max-h-[1300px]'>
                     <div className='my-auto 2xl:px-40 lg:px-28 px-12'>
@@ -47,6 +47,31 @@ const Banner = () => {
                     </div>
                 </div>
             </motion.div>
+            {/* Smaller device */}
+            <div
+                style={{ backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundImage: `url('${bannerImage}')`, backgroundPosition: 'calc(10% - 250px) center' }} className='block lg:hidden min-h-screen max-h-[1300px] w-full'>
+                <div
+                    className='text-white flex flex-col min-h-screen max-h-[1300px]'>
+                    <div className='my-auto 2xl:px-40 lg:px-28 px-12'>
+                        <motion.h3
+                            initial={{ opacity: 0, y: 100 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ ease: 'easeInOut', delay: 1, duration: 0.3 }}
+                            className='font-bold Alliance 2xl:text-7xl lg:text-5xl text-3xl'>Discover the downwind <br /> freeride and its adventure <br /> and discovery aspect</motion.h3>
+                        <motion.button
+                            initial={{ opacity: 0, y: 100 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ ease: 'easeInOut', delay: 1, duration: 0.5 }}
+                            onClick={() => navigate('allRuns')} className="mt-6 btn btn-info uppercase text-white btn-color ">view all runs <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g id="main_icons/arrow-up-right">
+                                    <path id="Vector" d="M12 2L2 12M12 2H3M12 2V11" stroke="white" stroke-width="2" />
+                                </g>
+                            </svg>
+                        </motion.button>
+                    </div>
+                </div>
+            </div>
+
             {/* Banner Second Section */}
             <div className='bg-black'>
                 {/* Transparent Text */}

@@ -1,18 +1,18 @@
-import React, { useContext, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import logo from '../assets/logo.svg'
 import google from '../assets/main_icons/google.svg'
 import { FaEye } from 'react-icons/fa';
-
 import { Link, useNavigate } from 'react-router-dom';
 import Arrow from '../assets/main_icons/arrow-up-right.svg'
 import Map from '../Components/Map/Map';
-import { AuthContext } from '../Provider/AuthProvider';
 import axios from 'axios';
+import generateRandomUsername from '../Utilities/userName';
+import useAuth from '../Hooks/useAuth';
 
 const SignIn = () => {
 
     // Context API || AuthProvider
-    const { createWithGoogle, signIn } = useContext(AuthContext);
+    const { createWithGoogle, signIn } = useAuth();
 
     // visibility of password
     const passwordRef = useRef(null);
@@ -62,17 +62,15 @@ const SignIn = () => {
             .then(result => {
                 const user = result.user;
                 const name = user?.displayName.split(' ');
-                const firstName = name[0];
                 const surName = name[1];
-                axios.post('http://localhost:5000/users', { email: user?.email, firstName: firstName, surName: surName, uid: user?.uid })
+                axios.post('http://localhost:5000/users', { email: user?.email, surName: surName, name: user?.displayName, uid: user?.uid, userName: generateRandomUsername(10) })
                     .then(rseponse => {
                         navigate('/userInformation')
-                        console.log(user);
-                        setError(false)
                     })
+                console.log(user);
             })
             .catch(error => {
-                console.log(error);
+                console.log(error)
             })
     }
 

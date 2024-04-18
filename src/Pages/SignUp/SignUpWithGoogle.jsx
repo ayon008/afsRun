@@ -1,16 +1,15 @@
-import React, { useContext, useRef, useState } from 'react';
+// First Page
 import logo from '../../assets/logo.svg';
 import google from '../../assets/main_icons/google.svg'
 import { Link, useNavigate } from 'react-router-dom';
 import Arrow from '../../assets/main_icons/arrow-up-right.svg'
-import { AuthContext } from '../../Provider/AuthProvider';
-import { Helmet } from 'react-helmet';
 import axios from 'axios';
+import generateRandomUsername from '../../Utilities/userName';
+import useAuth from '../../Hooks/useAuth';
 
 const SignUpWithGoogle = () => {
-
     // AuthContext
-    const { createWithGoogle } = useContext(AuthContext);
+    const { createWithGoogle } = useAuth()
 
     // Navigate to next page
     const navigate = useNavigate();
@@ -28,9 +27,8 @@ const SignUpWithGoogle = () => {
             .then(result => {
                 const user = result.user;
                 const name = user?.displayName.split(' ');
-                const firstName = name[0];
                 const surName = name[1];
-                axios.post('http://localhost:5000/users', { email: user?.email, firstName: firstName, surName: surName })
+                axios.post('http://localhost:5000/users', { email: user?.email, surName: surName, name: user?.displayName, uid: user?.uid, userName: generateRandomUsername(10) })
                     .then(rseponse => {
                         navigate('/userInformation')
                     })
@@ -40,7 +38,6 @@ const SignUpWithGoogle = () => {
                 console.log(error)
             })
     }
-
 
     return (
         <div className="card shrink-0 lg:w-1/3 w-full shadow-2xl rounded-none bg-[#1F1F1F]">

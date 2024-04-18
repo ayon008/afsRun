@@ -1,17 +1,16 @@
-import React, { useContext, useRef, useState } from 'react';
+// Third Page
+
+import { useState } from 'react';
 import logo from '../../assets/logo.svg';
-import google from '../../assets/main_icons/google.svg'
-import { Link, useNavigate } from 'react-router-dom';
-import { FaCheck, FaEye } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 import Arrow from '../../assets/main_icons/arrow-up-right.svg'
 import { updateProfile } from 'firebase/auth';
-import { AuthContext } from '../../Provider/AuthProvider';
-import { Helmet } from 'react-helmet';
 import { Swal } from 'sweetalert2/dist/sweetalert2';
+import useAuth from '../../Hooks/useAuth';
 
 const SignUpUserDetails = () => {
     const [error, setError] = useState('');
-    const { createAccount, user } = useContext(AuthContext);
+    const { createAccount, user } = useAuth()
     const handleSignUp = event => {
         event.preventDefault();
         const data = JSON.parse(localStorage.getItem('data'));

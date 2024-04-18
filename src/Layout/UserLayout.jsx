@@ -1,12 +1,11 @@
-import React, { useContext } from 'react';
 import Map from '../Components/Map/Map';
-import { AuthContext } from '../Provider/AuthProvider';
 import logo from '../assets/logo.png';
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { FaClipboardList, FaLock, FaNewspaper, FaSignOutAlt, FaUser, FaUsers } from 'react-icons/fa';
+import { FaClipboardList, FaLock, FaNewspaper, FaSignOutAlt, FaUser } from 'react-icons/fa';
+import useAuth from '../Hooks/useAuth';
 
 const UserLayout = () => {
-    const { user, logOut } = useContext(AuthContext)
+    const { user, logOut } = useAuth()
     // sign out user
     const navigate = useNavigate()
     const handleLogout = () => {

@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/logo.png'
-import { AuthContext } from '../Provider/AuthProvider';
 import { FaUser } from 'react-icons/fa';
+import useAuth from '../Hooks/useAuth';
 
 const NavBar = () => {
-    const { user } = useContext(AuthContext);
+    const { user } = useAuth()
     const navItems = <>
         <li>
             <NavLink className={({ isActive }) => isActive ? "text-[#1D98FF] Alliance uppercase" : "text-[#FFFFFFCC] Alliance uppercase"} to="discover">Discover</NavLink>

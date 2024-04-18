@@ -1,6 +1,7 @@
-import React, { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import app from '../firebase/firebase.init';
+import axios from 'axios';
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
@@ -11,7 +12,7 @@ const AuthProvider = ({ children }) => {
 
     const googleProvider = new GoogleAuthProvider();
     // google
-    
+
     const createWithGoogle = () => {
         return signInWithPopup(auth, googleProvider)
     }
@@ -45,22 +46,14 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, user => {
-            setUser(user);
-            // if (user) {
-            //     fetch('http://localhost:5000/jwt', {
-            //         method: 'POST',
-            //         headers: {
-            //             'content-type': 'application/json',
-            //         },
-            //         body: JSON.stringify(user)
-            //     })
-            //         .then(res => res.json())
-            //         .then(data => {
-            //             const token = data.token;
-            //             sessionStorage.setItem('access-token', token)
-            //             console.log(token);
-            //         })
-            // }
+            setUser(user)
+            axios.post('http://localhost:5000/jwt', { email: user?.email })
+                .then(response => {
+                    if (response.data) {
+                        console.log(response.data);
+                        sessionStorage.setItem('access-token', JSON.stringify(response.data.token))
+                    }
+                })
             setLoader(false)
         })
         return () => {

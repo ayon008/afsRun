@@ -1,3 +1,5 @@
+// Second Page
+
 import React, { useRef, useState } from 'react';
 import logo from '../../assets/logo.svg'
 import google from '../../assets/main_icons/google.svg'
@@ -37,8 +39,9 @@ const SignUpForm = () => {
             console.log(email, confirmPassword, password, error);
             return;
         }
-        let userCredential = { email, password };
-        localStorage.setItem('data', JSON.stringify(userCredential));
+        const userCredentials = { email: email, password: password }
+        localStorage.setItem('credential', JSON.stringify(userCredentials));
+        console.log(userCredentials);
         navigate('/signup/user');
     }
 

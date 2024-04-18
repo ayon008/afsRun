@@ -1,21 +1,15 @@
-import React from 'react';
-import img1 from '../../assets/layout-list.svg';
-import img2 from '../../assets/layout-grid.svg';
-import { FaGripHorizontal, FaGripLines, FaGripVertical, FaTable } from 'react-icons/fa';
-import Table from './RunTable';
-import { Outlet, NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { useContext } from 'react';
 import toGeoJSON from 'togeojson';
-import { AuthContext } from '../../Provider/AuthProvider';
 import { BsGrid } from 'react-icons/bs';
 import { CiGrid2H } from 'react-icons/ci';
 import ApprovedRuns from './ApprovedRuns';
 import RunTable from './RunTable';
+import useAuth from '../../Hooks/useAuth';
 
 const RunsResult = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user } = useAuth();
     const [data, setData] = useState(null);
     const [error, setError] = useState('');
 

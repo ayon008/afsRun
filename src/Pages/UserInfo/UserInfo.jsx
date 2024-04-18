@@ -1,41 +1,27 @@
-import React, { useState, useContext, useEffect } from 'react';
 import { FaCheck, FaPen } from 'react-icons/fa';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
-import { AuthContext } from '../../Provider/AuthProvider';
+import useAuth from '../../Hooks/useAuth';
+import generateRandomUsername from '../../Utilities/userName';
+import axios from 'axios';
 
 const UserInfo = () => {
-    const { user } = useContext(AuthContext)
-    const [userData, setUserData] = useState([])
-    useEffect(() => {
-        fetch(`http://localhost:5000/users/${user?.uid},`, {
-            method: 'GET',
-            headers: {
-                authorization: `Bearer ${sessionStorage.getItem('access-token')}`
-            }
-        })
-            .then(res => res.json())
-            .then(data => setUserData(data))
-    }, [])
+    const { user } = useAuth()
+    const name = user?.displayName;
+    const email = user?.email;
+    const surName = user?.displayName.split(' ')[1];
+    const userName = generateRandomUsername(7);
 
     const updateInformation = event => {
-        event.preventDefault()
+        event.preventDefault();
         const email = event.target.email.value;
         const name = event.target.name.value;
         const surName = event.target.surName.value;
         const userName = event.target.nickname.value;
         const region = event.target.region.value;
-        const data = { email, name, surName, userName, region };
-        fetch(`http://localhost:5000/users/${user?.uid}`, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
+        axios.put(`http://localhost:5000/users/${user?.uid}`, { email, name, surName, userName, region })
             .then(data => {
-                if (data.modifiedCount) {
+                if (data.data.modifiedCount) {
                     Swal.fire({
                         position: "center",
                         background: '#1F1F1F',
@@ -49,7 +35,6 @@ const UserInfo = () => {
             })
     }
 
-    const { email, name, surName, userName, uid } = userData;
     return (
         <div className='px-4'>
             <h3 className='text-3xl mt-12 text-white font-bold Alliance pt-1'>User Information</h3>
