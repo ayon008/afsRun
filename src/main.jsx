@@ -4,6 +4,8 @@ import './index.css'
 import router from './Router/Router.jsx'
 import { RouterProvider } from 'react-router-dom'
 import AuthProvider from './Provider/AuthProvider.jsx'
+import { ToastContainer } from 'react-toastify';
+
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -11,6 +13,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <AuthProvider>
       <div className='max-w-[1920px] mx-auto Alliance'>
         <RouterProvider router={router} />
+        <ToastContainer
+          position="top-right"
+          autoClose={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          theme="dark"
+        />
       </div>
     </AuthProvider>
   </React.StrictMode>,

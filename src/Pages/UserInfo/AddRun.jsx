@@ -47,10 +47,10 @@ const AddRun = () => {
                 <div className='grid grid-cols-3 gap-x-3 2xl:gap-y-5 lg:gap-y-3 form-control'>
                     <h3 className='dim col-span-3'>Information</h3>
                     <div className="form-control">
-                        <input {...register("runName")} disabled={isDisable} type="text" placeholder="Run Name" className="input input-bordered border-2 border-[#666] bg-[#1F1F1F] text-white Alliance" required />
+                        <input {...register("runName")} disabled={isDisable} type="text" placeholder="Run Name" className="input input-bordered border-2 border-[#666] bg-[#1F1F1F] text-white Alliance disabled" required />
                     </div>
                     <div className="form-control">
-                        <select className="select text-base input input-bordered border-2 border-[#666] bg-[#1F1F1F] text-white dim Alliance" disabled={isDisable} required {...register("difficulty")}>
+                        <select className="select text-base input input-bordered border-2 border-[#666] bg-[#1F1F1F] text-white dim Alliance disabled" disabled={isDisable} required {...register("difficulty")}>
                             <option disabled selected>Difficulty Level</option>
                             <option>France</option>
                             <option>England</option>
@@ -59,7 +59,7 @@ const AddRun = () => {
                         </select>
                     </div>
                     <div className="form-control">
-                        <select className="select text-base input input-bordered border-2 border-[#666] bg-[#1F1F1F] text-white dim Alliance" disabled={isDisable} required {...register("country")}>
+                        <select className="select text-base input input-bordered border-2 border-[#666] bg-[#1F1F1F] text-white dim Alliance disabled" disabled={isDisable} required {...register("country")}>
                             <option disabled selected>Country</option>
                             <option>France</option>
                             <option>England</option>
@@ -69,13 +69,13 @@ const AddRun = () => {
                     </div>
                     <h3 className='dim col-span-3'>Run details</h3>
                     <div className="form-control">
-                        <input disabled={isDisable} type="number" {...register("distance")} placeholder="Distance" className="input input-bordered border-2 border-[#666] bg-[#1F1F1F] text-white Alliance" required />
+                        <input disabled={isDisable} type="number" {...register("distance")} placeholder="Distance" className="input input-bordered border-2 border-[#666] bg-[#1F1F1F] text-white Alliance disabled" required />
                     </div>
                     <div className="form-control">
-                        <input disabled={isDisable} type="text" {...register("startingPoint")} placeholder="Starting Point" className="input input-bordered border-2 border-[#666] bg-[#1F1F1F] text-white Alliance" required />
+                        <input disabled={isDisable} type="text" {...register("startingPoint")} placeholder="Starting Point" className="input input-bordered border-2 border-[#666] bg-[#1F1F1F] text-white Alliance disabled" required />
                     </div>
                     <div className="form-control">
-                        <input disabled={isDisable} type="text" {...register("endingPoint")} placeholder="Ending Point" className="input input-bordered border-2 border-[#666] bg-[#1F1F1F] text-white Alliance" required />
+                        <input disabled={isDisable} type="text" {...register("endingPoint")} placeholder="Ending Point" className="input input-bordered border-2 border-[#666] bg-[#1F1F1F] text-white Alliance disabled" required />
                     </div>
                 </div>
                 <div className="form-control">

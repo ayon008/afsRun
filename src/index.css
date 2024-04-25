@@ -26,3 +26,7 @@ li:focus {
 .menu li a:focus {
     @apply text-[#1D98FF] !important;
 }
+
+.disabled:disabled {
+    @apply bg-[#1F1F1F] text-white !important; 
+}

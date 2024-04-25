@@ -1,31 +1,42 @@
 import { useRef, useState } from 'react';
-import logo from '../assets/logo.svg'
+import logo from '../assets/logo.png'
 import google from '../assets/main_icons/google.svg'
-import { FaEye } from 'react-icons/fa';
+import { FaEye, FaTimes } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import Arrow from '../assets/main_icons/arrow-up-right.svg'
 import Map from '../Components/Map/Map';
 import axios from 'axios';
 import generateRandomUsername from '../Utilities/userName';
 import useAuth from '../Hooks/useAuth';
+import { useForm } from "react-hook-form"
 
 const SignIn = () => {
+
+    // React form
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm()
+
 
     // Context API || AuthProvider
     const { createWithGoogle, signIn } = useAuth();
 
     // visibility of password
-    const passwordRef = useRef(null);
-    const [type, setType] = useState(true);
-    const showCredential = (ref) => {
-        if (type) {
-            ref.current.type = 'text';
-            setType(!type);
+    const [toggle, setToggle] = useState(true);
+    const [type, setType] = useState('password');
+
+    const showCredential = (event) => {
+        event.stopPropagation();
+        if (toggle) {
+            setType('text');
         }
         else {
-            ref.current.type = 'password';
-            setType(!type);
+            setType('password');
         }
+        setToggle(!toggle);
     }
 
     // Error Message
@@ -36,15 +47,15 @@ const SignIn = () => {
     const navigate = useNavigate();
 
     // Email & Password Login
-    const onSubmit = event => {
-        event.preventDefault();
-        const email = event.target.email.value;
-        const password = event.target.password.value;
+    const onSubmit = data => {
+        const email = data?.email;
+        const password = data?.password;
+        console.log(email, password);
         signIn(email, password)
             .then(result => {
                 const user = result.user;
                 navigate('/discover')
-                event.target.reset();
+                reset();
                 console.log(user);
                 setError(false)
             })
@@ -56,6 +67,9 @@ const SignIn = () => {
     }
 
     console.log(error);
+
+
+
     // Google Login
     const handleGoogleLogin = () => {
         createWithGoogle()
@@ -89,16 +103,17 @@ const SignIn = () => {
                 <div className="hero absolute z-30 w-full" style={{ top: '50%', left: '50%', transform: "translate(-50%, -50%)" }}>
                     <div className="hero-content w-full flex flex-col">
                         {/* Form */}
-                        <div className="card shrink-0 lg:w-1/3 w-full shadow-2xl rounded-none bg-[#1F1F1F] max-h-[520px]">
-                            <form onSubmit={onSubmit} className="card-body space-y-1">
-                                <img src={logo} className='w-[150px] h-[20px] mx-auto' alt="" />
+                        <div className="card relative shrink-0 lg:w-1/3 w-full shadow-2xl rounded-lg bg-[#1F1F1F] max-h-[520px]">
+                            <FaTimes className='absolute top-3 right-3 ' color='#8F8F8F' />
+                            <form onSubmit={handleSubmit(onSubmit)} className="card-body space-y-[1px]">
+                                <img src={logo} className='w-[200px] h-[20px] mx-auto' alt="" />
                                 <div className='text-white text-center'>
                                     <h3 className='font-bold 2xl:text-[28px] lg:text-2xl Alliance tracking-wide'>Sign up for AFS Runs</h3>
                                     <h5 className='2xl:text-base lg:text-sm Alliance tracking-wide text-[#FFFFFF99]'>Add your own records for everyone to see</h5>
                                 </div>
                                 {/* Email field */}
                                 <div className="form-control relative">
-                                    <input type="email" name='email' placeholder="Email Address" className="input input-bordered border-2 border-[#666] bg-[#1F1F1F] text-white Alliance" required />
+                                    <input type="email" name='email' {...register("email")} placeholder="Email Address" className="input input-bordered border-2 border-[#666] bg-[#1F1F1F] text-white Alliance" required />
                                 </div>
                                 {/* Error message */}
                                 {
@@ -109,16 +124,20 @@ const SignIn = () => {
                                     </div>
                                 }
                                 {/* Password Field */}
-                                <div className="form-control relative">
-                                    <input type="password" ref={passwordRef} name='password' placeholder="Password" className="input input-bordered border-2 border-[#666] bg-[#1F1F1F] text-white Alliance" required />
-                                    <FaEye onClick={() => showCredential(passwordRef)} className='text-[#999999] absolute right-4 top-1/2' style={{ transform: "translateY(-50%)" }} />
+                                <div className="form-control relative mb-0">
+                                    <input type={type} {...register("password")} name='password' placeholder="Password" className="input input-bordered border-2 border-[#666] bg-[#1F1F1F] text-white Alliance" required />
+                                    <FaEye onClick={() => showCredential(event)} className='text-[#999999] absolute right-4 top-1/2 bottom-1/2 cursor-pointer' style={{ transform: "translateY(-50%)" }} />
+                                </div>
+                                <div className='flex gap-1'>
+                                    <p className='w-fit flex-grow-0'><Link to="/signup" className='text-[#1D98FF] text-sm'>Forgot password?</Link></p>
+                                    <img src={Arrow} className='w-[12px] mt-1' alt="" />
                                 </div>
                                 <div>
                                     <p className='text-center text-[#999999] Alliance text-xs'>OR</p>
                                 </div>
                                 {/* Google Field */}
-                                <div className='bg-white rounded'>
-                                    <div className='flex items-center p-3 gap-4 cursor-pointer' onClick={handleGoogleLogin}>
+                                <div>
+                                    <div className='flex items-center px-3 rounded-[10px] bg-white py-1 border-2 border-[#1D98FF] gap-4 cursor-pointer' onClick={handleGoogleLogin}>
                                         <img src={google} alt="" />
                                         <h3 className='Alliance font-semibold'>Continue with Google</h3>
                                     </div>

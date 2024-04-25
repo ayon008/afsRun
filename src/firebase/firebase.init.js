@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyD11uQEw-ScTr42WHRw_DSOdQURwD7QEMY",
-    authDomain: "afs-runs.firebaseapp.com",
-    projectId: "afs-runs",
-    storageBucket: "afs-runs.appspot.com",
-    messagingSenderId: "608480532098",
-    appId: "1:608480532098:web:f0fbce4acf0ad08438869b"
+    apiKey: "AIzaSyBxaIo7Y65Bpdc-IqnPrdZKY0Ilo51GrOs",
+    authDomain: "afs-run.firebaseapp.com",
+    projectId: "afs-run",
+    storageBucket: "afs-run.appspot.com",
+    messagingSenderId: "625689061834",
+    appId: "1:625689061834:web:4e7959b045d281160c4733"
 };
 
 // Initialize Firebase

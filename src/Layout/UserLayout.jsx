@@ -37,7 +37,7 @@ const UserLayout = () => {
                     <div className='w-full h-full'>
                         <div className='rounded-md w-full h-full' style={{ display: "grid", gridTemplateColumns: '2fr 4fr' }}>
                             <div className='p-5 bg-[#111111] h-full'>
-                                <img className='h-auto w-[150px]' src={logo} alt="" />
+                                <img onClick={() => navigate('/')} className='h-auto w-[150px]' src={logo} alt="" />
                                 <div className="mt-6 flex flex-col h-full">
                                     <ul className='flex flex-col h-[90%] justify-between'>
                                         <div className='space-y-5'>

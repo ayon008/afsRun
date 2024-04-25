@@ -17,7 +17,6 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, googleProvider)
     }
 
-
     // create with Email & Password 
     const createAccount = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
@@ -47,13 +46,16 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, user => {
             setUser(user)
-            axios.post('http://localhost:5000/jwt', { email: user?.email })
-                .then(response => {
-                    if (response.data) {
-                        console.log(response.data);
-                        sessionStorage.setItem('access-token', JSON.stringify(response.data.token))
-                    }
-                })
+            if (user) {
+                axios.post('http://localhost:5000/jwt', { email: user?.email })
+                    .then(response => {
+                        if (response.data) {
+                            console.log(response.data);
+                            sessionStorage.setItem('access-token', JSON.stringify(response.data.token))
+                        }
+                    })
+            }
+            sessionStorage.removeItem('access-token');
             setLoader(false)
         })
         return () => {
