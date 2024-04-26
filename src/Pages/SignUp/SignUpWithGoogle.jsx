@@ -8,9 +8,10 @@ import generateRandomUsername from '../../Utilities/userName';
 import useAuth from '../../Hooks/useAuth';
 import { FaTimes } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 
 const SignUpWithGoogle = () => {
-
     // React form
     const {
         register,
@@ -29,7 +30,18 @@ const SignUpWithGoogle = () => {
     const onSubmit = data => {
         const email = data?.email;
         localStorage.setItem('email', JSON.stringify(email));
-        navigate('/signUp/signUpForm');
+        axios.post('http://localhost:5000/email', { email })
+            .then(response => {
+                Swal.fire({
+                    position: "center",
+                    background: '#1F1F1F',
+                    color: 'white',
+                    icon: "success",
+                    title: "verification email is sent",
+                    showConfirmButton: false,
+                    timer: null
+                });
+            })
     }
 
     const handleGoogleLogin = () => {
