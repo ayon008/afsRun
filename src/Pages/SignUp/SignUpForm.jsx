@@ -5,9 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaCheck, FaEye, FaTimes } from "react-icons/fa";
 import Arrow from '../../assets/main_icons/arrow-up-right.svg'
 import { useForm } from 'react-hook-form';
-import useNotify from '../../Hooks/useNotify';
-
-
+import notify from '../../Js/notify';
 
 const SignUpForm = () => {
     // Error 
@@ -31,7 +29,8 @@ const SignUpForm = () => {
         if (password !== confirmPassword) {
             setError('password did not match')
             console.log(email, confirmPassword, password, error);
-            useNotify("Password didn't matched")
+            // React toast 
+            notify("Password didn't matched")
             return;
         }
         const userCredentials = JSON.stringify({ email: email, password: password })
@@ -73,9 +72,12 @@ const SignUpForm = () => {
                     <input type="email" name='email' value={JSON.parse(localStorage.getItem('email'))} placeholder="emmma_s@email.com" className="input input-bordered border-2 border-[#666] bg-[#1F1F1F] text-white Alliance" required />
                 </div>
                 <div className="form-control relative">
-                    <input type={type} name='password' placeholder="Password" {...register("password")} className="input input-bordered border-2 border-[#666] bg-[#1F1F1F] text-white Alliance" required />
+                    <input type={type} name='password' placeholder="Password" {...register("password", { minLength: 7 })} className="input input-bordered border-2 border-[#666] bg-[#1F1F1F] text-white Alliance" required />
                     <FaEye onClick={() => showCredential(event)} className='text-[#999999] absolute right-4 top-1/2' style={{ transform: "translateY(-50%)" }} />
                 </div>
+                {
+                    errors?.password && notify("Password must be seven characters long")
+                }
                 <div className="form-control relative">
                     <input type={type}  {...register("confirmPassword")} name='confirmPassword' placeholder="Repeat password" className="input input-bordered border-2 border-[#666] bg-[#1F1F1F] text-white Alliance" required />
                     <FaEye onClick={() => showCredential(event)} className='text-[#999999] absolute right-4 top-1/2' style={{ transform: "translateY(-50%)" }} />

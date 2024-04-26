@@ -15,7 +15,7 @@ import RunMap from "../Pages/RunMap";
 import AddRun from "../Pages/UserInfo/AddRun";
 import PrivateRoute from "../Provider/PrivateRoute";
 import UserProfile from "../Pages/UserInfo/UserProfile";
-import DashBoard from "../Pages/Admin/DashBoard";
+import Loader from "../Components/Loader";
 
 const router = createBrowserRouter([
     {
@@ -82,7 +82,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <DashBoard></DashBoard>
+        element: <Loader />
     }
 ]);
 

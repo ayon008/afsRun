@@ -1,9 +1,9 @@
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 
-const useNotify = (message) => toast.error(message, {
+const notify = (message) => toast.error(message, {
     position: "top-right",
-    autoClose: false,
+    autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
@@ -12,4 +12,4 @@ const useNotify = (message) => toast.error(message, {
     theme: "dark",
 });
 
-export default useNotify;
+export default notify

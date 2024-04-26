@@ -15,8 +15,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <RouterProvider router={router} />
         <ToastContainer
           position="top-right"
-          autoClose={false}
-          newestOnTop={false}
+          autoClose={5000}
+          newestOnTop={true}
           closeOnClick
           rtl={false}
           pauseOnFocusLoss

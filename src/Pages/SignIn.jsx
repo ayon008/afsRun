@@ -9,6 +9,8 @@ import axios from 'axios';
 import generateRandomUsername from '../Utilities/userName';
 import useAuth from '../Hooks/useAuth';
 import { useForm } from "react-hook-form"
+import notify from '../Js/notify';
+import Loader from '../Components/Loader';
 
 const SignIn = () => {
 
@@ -22,12 +24,16 @@ const SignIn = () => {
 
 
     // Context API || AuthProvider
-    const { createWithGoogle, signIn } = useAuth();
+    const { createWithGoogle, signIn, resetPassword } = useAuth()
+
+    // Loading
+    const [isLoading, setLoading] = useState(false);
 
     // visibility of password
     const [toggle, setToggle] = useState(true);
     const [type, setType] = useState('password');
 
+    // 
     const showCredential = (event) => {
         event.stopPropagation();
         if (toggle) {
@@ -48,12 +54,14 @@ const SignIn = () => {
 
     // Email & Password Login
     const onSubmit = data => {
+        setLoading(true);
         const email = data?.email;
         const password = data?.password;
         console.log(email, password);
         signIn(email, password)
             .then(result => {
                 const user = result.user;
+                setLoading(false);
                 navigate('/discover')
                 reset();
                 console.log(user);
@@ -61,14 +69,14 @@ const SignIn = () => {
             })
             .catch(error => {
                 if (error.message === "Firebase: Error (auth/invalid-credential)") {
-                    setError(error)
+                    notify("Email or password doesn't match");
                 }
+                setError(true)
+                setLoading(false)
             })
     }
 
     console.log(error);
-
-
 
     // Google Login
     const handleGoogleLogin = () => {
@@ -88,8 +96,15 @@ const SignIn = () => {
             })
     }
 
+    if (isLoading) {
+        return (
+            <Loader />
+        )
+    }
+
+
     return (
-        <div className=''>
+        <div>
             <div className='relative'>
                 {/* Background Map */}
                 <div className="z-10">
@@ -120,7 +135,7 @@ const SignIn = () => {
                                     error &&
                                     <div role="alert" className="alert alert-warning p-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
-                                        <span className='text-xs'>Warning: Invalid email address!</span>
+                                        <span className='text-xs'>Warning: Invalid email address or password!</span>
                                     </div>
                                 }
                                 {/* Password Field */}
