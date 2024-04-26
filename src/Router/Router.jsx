@@ -16,6 +16,7 @@ import AddRun from "../Pages/UserInfo/AddRun";
 import PrivateRoute from "../Provider/PrivateRoute";
 import UserProfile from "../Pages/UserInfo/UserProfile";
 import Loader from "../Components/Loader";
+import ForgotPassword from "../Pages/ForgotPassword";
 
 const router = createBrowserRouter([
     {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
                 path: 'userDetails',
                 element: <SignUpUserDetails></SignUpUserDetails>
             },
+            {
+                path: 'forgotPassword',
+                element: <ForgotPassword />
+            }
         ]
     },
     {

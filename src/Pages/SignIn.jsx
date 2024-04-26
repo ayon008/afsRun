@@ -24,7 +24,7 @@ const SignIn = () => {
 
 
     // Context API || AuthProvider
-    const { createWithGoogle, signIn, resetPassword } = useAuth()
+    const { createWithGoogle, signIn } = useAuth()
 
     // Loading
     const [isLoading, setLoading] = useState(false);
@@ -47,7 +47,6 @@ const SignIn = () => {
 
     // Error Message
     const [error, setError] = useState(false);
-
 
     // Navigate after login
     const navigate = useNavigate();
@@ -76,8 +75,6 @@ const SignIn = () => {
             })
     }
 
-    console.log(error);
-
     // Google Login
     const handleGoogleLogin = () => {
         createWithGoogle()
@@ -100,6 +97,11 @@ const SignIn = () => {
         return (
             <Loader />
         )
+    }
+
+    // Reset Password
+    const handleReset = () => {
+        navigate('/signup/forgotPassword')
     }
 
 
@@ -144,7 +146,7 @@ const SignIn = () => {
                                     <FaEye onClick={() => showCredential(event)} className='text-[#999999] absolute right-4 top-1/2 bottom-1/2 cursor-pointer' style={{ transform: "translateY(-50%)" }} />
                                 </div>
                                 <div className='flex gap-1'>
-                                    <p className='w-fit flex-grow-0'><Link to="/signup" className='text-[#1D98FF] text-sm'>Forgot password?</Link></p>
+                                    <p className='w-fit flex-grow-0' onClick={() => handleReset()}><Link to="/signup" className='text-[#1D98FF] text-sm'>Forgot password?</Link></p>
                                     <img src={Arrow} className='w-[12px] mt-1' alt="" />
                                 </div>
                                 <div>
