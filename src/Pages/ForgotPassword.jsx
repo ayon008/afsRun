@@ -1,8 +1,5 @@
-// First Page
 import logo from '../assets/logo.png'
-import { Link, useNavigate } from 'react-router-dom';
-import Arrow from '../assets/main_icons/arrow-up-right.svg'
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
@@ -28,6 +25,20 @@ const ForgotPassword = () => {
     const onSubmit = data => {
         const email = data?.email;
         resetPassword(email)
+            .then(result => {
+                Swal.fire({
+                    position: "center",
+                    background: '#1F1F1F',
+                    color: 'white',
+                    icon: "success",
+                    title: "Please Check Your Email",
+                    showConfirmButton: false,
+                    timer: 4000
+                });
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
     }
 
     return (
